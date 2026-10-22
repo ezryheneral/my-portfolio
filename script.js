@@ -129,6 +129,10 @@
       top.append(icon, element("span", "certificate-category", categoryName));
       card.append(top);
       const bottom = element("div", "certificate-card-bottom");
+      const documentLink = element("a", "document-link", "Download PDF ↓");
+      documentLink.href = record.image.replace('/previews/', '/documents/').replace(/\.jpg$/, '.pdf');
+      documentLink.download = `${record.id}.pdf`;
+      documentLink.setAttribute("aria-label", `Download certificate PDF: ${record.title}`);
       if (record.image) {
         const thumbnail = element("img", "certificate-thumbnail");
         thumbnail.alt = record.imageAlt || `${record.title} certificate`;
@@ -182,12 +186,13 @@
           card.append(time);
         }
       }
+      bottom.append(documentLink);
       card.append(bottom);
       grid.append(card);
     });
     const label = data.categories.find((item) => item.id === category)?.label;
     document.querySelector("#results-count").textContent =
-      `${records.length} ${records.length === 1 ? "record" : "records"}${category === "all" ? " across 5 learning providers" : ` · ${label}`}`;
+      `${records.length} ${records.length === 1 ? "record" : "records"}${category === "all" ? " across 5 learning categories" : ` · ${label}`}`;
   }
   data.categories.forEach((category) => {
     const button = element("button", "filter-button", category.label);
@@ -253,3 +258,4 @@
     }
   }
 })();
+

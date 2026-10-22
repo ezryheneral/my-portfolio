@@ -565,6 +565,36 @@ h2 > span {
   font-size: 8px;
   letter-spacing: 1.7px;
 }
+.project-screenshots {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  width: min(92%, 420px);
+  margin: 22px auto 20px;
+}
+.project-screenshots figure {
+  margin: 0;
+  min-width: 0;
+}
+.project-screenshots img {
+  display: block;
+  width: 100%;
+  height: 118px;
+  object-fit: cover;
+  object-position: top center;
+  border: 1px solid #52776f;
+  border-radius: 5px;
+  background: #0b131f;
+}
+.project-screenshots figure:first-child img {
+  object-position: center 22%;
+}
+.project-screenshots figcaption {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 8px;
+  text-align: center;
+}
 .document-art {
   width: 110px;
   height: 140px;
@@ -1218,6 +1248,9 @@ dialog::backdrop {
     border-right: 0;
     border-bottom: 1px solid var(--border);
   }
+  .project-screenshots {
+    width: min(92%, 420px);
+  }
   .project-copy {
     padding: 28px;
   }
@@ -1380,3 +1413,22 @@ dialog::backdrop {
   width: 18px;
   height: 18px;
 }
+.portrait-frame.portrait-photo-frame { width: 250px; height: 250px; aspect-ratio: 1; border-radius: 50%; padding: 0; margin: auto; }
+.portrait-photo-frame::before, .portrait-photo-frame::after { display: none; }
+.profile-photo { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 38%; }
+.hero-visual { padding: 0; justify-self: center; align-self: center; }
+.hero-visual .student-note { display: none; }
+.certificate-card-bottom { flex-wrap: wrap; gap: 12px; }
+.document-link { color: var(--accent); font-size: 11px; }
+@media (max-width: 760px) { .portrait-frame.portrait-photo-frame { width: 180px; height: 180px; } .hero-visual { width: auto; margin: 30px auto 0; } }
+.project-card { grid-template-columns: 1fr; }
+.project-visual.project-gallery { min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) 170px; align-items: center; gap: 24px; padding: 28px; border-right: 0; border-bottom: 1px solid var(--border); }
+.project-gallery figure { margin: 0; min-width: 0; }
+.project-gallery img { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: 6px; }
+.project-gallery figcaption { margin-top: 10px; color: var(--muted); font-size: 11px; }
+.project-gallery a { display: block; }
+@media (max-width: 760px) {
+  .project-visual.project-gallery { grid-template-columns: 1fr; padding: 18px; gap: 20px; }
+  .project-gallery .mobile-preview { width: min(180px, 65%); justify-self: center; }
+}
+
